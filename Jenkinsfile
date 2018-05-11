@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Build1') {
+    stage('PreBuild') {
       parallel {
-        stage('error') {
+        stage('Pre1') {
           environment {
             DEVICE = 'COOKIE'
           }
@@ -11,7 +11,7 @@ pipeline {
             sh './build/prebuild.sh'
           }
         }
-        stage('Build2') {
+        stage('Pre2') {
           environment {
             DEVICE = 'dev2'
           }
@@ -19,6 +19,16 @@ pipeline {
             build 'Demo2Job1'
           }
         }
+      }
+    }
+    stage('Build') {
+      steps {
+        build 'Demo2MultiConfig'
+      }
+    }
+    stage('Deliver') {
+      steps {
+        sh 'echo done'
       }
     }
   }
