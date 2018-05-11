@@ -27,8 +27,17 @@ pipeline {
       }
     }
     stage('Deliver') {
-      steps {
-        sh 'echo done'
+      parallel {
+        stage('Deliver') {
+          steps {
+            sh 'echo done'
+          }
+        }
+        stage('') {
+          steps {
+            build 'solopipeline'
+          }
+        }
       }
     }
   }
