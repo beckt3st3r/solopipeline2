@@ -6,7 +6,7 @@ pipeline {
         DEVICE = 'COOKIE'
       }
       steps {
-        build 'Demo2Job1'
+        sh './build/prebuild.sh'
       }
     }
   }
