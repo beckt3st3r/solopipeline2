@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        build 'Demo2MultiConfig'
+        build 'Demo2Job1'
       }
     }
     stage('Deliver') {
@@ -33,7 +33,7 @@ pipeline {
             sh 'echo done'
           }
         }
-        stage('') {
+        stage('error') {
           steps {
             build 'solopipeline'
           }
