@@ -1,12 +1,12 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('error') {
       environment {
         DEVICE = 'COOKIE'
       }
       steps {
-        build 'Demo2Job1'
+        sh './build/prebuild.sh'
       }
     }
   }
